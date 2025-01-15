@@ -297,6 +297,21 @@
     <xsl:apply-templates />
   </xsl:template>
 
+  <xsl:template match="div[contains(concat(' ', @class, ' '), ' prose ')]/p[position() = 1]">
+    <w:p>
+      <xsl:apply-templates/>
+    </w:p>
+  </xsl:template>
+
+  <xsl:template match="div[contains(concat(' ', @class, ' '), ' prose ')]/p[position() > 1]">
+    <w:p>
+      <w:pPr>
+        <w:ind w:firstLine="1440"/>
+      </w:pPr>
+      <xsl:apply-templates/>
+    </w:p>
+  </xsl:template>
+
   <xsl:template match="details" />
 
   <xsl:template match="text()">
